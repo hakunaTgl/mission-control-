@@ -1,2 +1,4 @@
-import { readState } from "@/lib/state";
-export default async function Page(){const s=await readState();return <div><h1>Memory Vault</h1>{s.memory.map(m=><div className='card' key={m.id}><b>{m.title}</b> <span className='badge'>{m.type}</span><p>{m.content}</p></div>)}</div>}
+"use client";
+import { useEffect, useState } from "react";
+export default function Page(){const [rows,setRows]=useState<any[]>([]);const [title,setTitle]=useState('');const [content,setContent]=useState('');const [msg,setMsg]=useState('');const load=async()=>setRows(await (await fetch('/api/memory')).json());useEffect(()=>{load();},[]);async function add(){setMsg('Saving...');const r=await fetch('/api/memory',{method:'POST',body:JSON.stringify({title,content,type:'technical note'})});setMsg(r.ok?'Saved':'Error');if(r.ok){setTitle('');setContent('');load();}}
+return <div><h1>Memory Vault</h1><div className='card'><input value={title} onChange={e=>setTitle(e.target.value)} placeholder='Title'/><br/><textarea value={content} onChange={e=>setContent(e.target.value)} placeholder='Content'/><br/><button onClick={add}>Add Memory</button> <span>{msg}</span></div>{rows.map(m=><div className='card' key={m.id}><b>{m.title}</b> <span className='badge'>{m.type}</span><p>{m.content}</p></div>)}</div>}

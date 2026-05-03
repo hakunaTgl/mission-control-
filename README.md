@@ -1,22 +1,20 @@
 # Sovereign Mission Control
 
-Local-first startup operating system built with Next.js + TypeScript.
+Next.js + TypeScript local-first operating system with SQLite-backed persistence.
 
-## What is included
-- Dashboard with core operating metrics
-- Agent Control registry with 10 seeded agents and action surface
-- Project Inventory with 10 seeded projects
-- Builder Lab, War Room, Creative Lab, Memory Vault, Workflow Automations
-- Diagnostics Console with local mode and seed checks
-- Settings/Safety with risky-action approval policy
-- Local persistence via `data/state.json`
-
-## Run locally
+## Setup
 1. `cp .env.example .env`
 2. `npm install`
 3. `npm run dev`
-4. Open `http://localhost:3000`
 
-## Notes
-- Current storage is JSON local persistence and clearly labeled simulated areas.
-- `/logs` and `/data` are local-first paths.
+## Commands
+- `npm run build`
+- `npm run lint`
+- `node --test tests/runtime.test.mjs`
+
+## Capabilities
+- CRUD APIs and UX for Projects, Agents, Memory, Workflows
+- SQLite durability under `data/mission-control.db`
+- Approval queue + audit logs for risky actions
+- Anti-hang workflow run guard (`max 3 attempts`)
+- Diagnostics API for DB health and recent failures

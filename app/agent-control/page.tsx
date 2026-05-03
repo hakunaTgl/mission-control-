@@ -1,2 +1,4 @@
-import { readState } from "@/lib/state";
-export default async function Page(){const s=await readState();return <div><h1>Agent Control</h1>{s.agents.map(a=><div className='card' key={a.id}><b>{a.name}</b> <span className='badge'>{a.status}</span><p>{a.mission}</p><p>Tier {a.permissionTier} | Task: {a.currentTask}</p><p>Actions: View agent, Assign task, Simulate run (simulated), Mark blocked, Request approval, Reset failure count, Disable agent.</p></div>)}</div>}
+"use client";
+import { useEffect, useState } from "react";
+export default function Page(){const [rows,setRows]=useState<any[]>([]);const [msg,setMsg]=useState('');const load=async()=>setRows(await (await fetch('/api/agents')).json());useEffect(()=>{load();},[]);async function setBlocked(id:string){setMsg('Updating...');await fetch('/api/agents',{method:'PATCH',body:JSON.stringify({id,status:'blocked',failure_count:3,current_task:'Blocked for review'})});setMsg('Updated');load();}
+return <div><h1>Agent Control</h1><div className='card'>Actions are approval-aware and logged in audits.</div>{rows.map(a=><div className='card' key={a.id}><b>{a.name}</b> <span className='badge'>{a.status}</span><p>{a.mission}</p><button onClick={()=>setBlocked(a.id)}>Mark blocked</button></div>)}<p>{msg}</p></div>}
