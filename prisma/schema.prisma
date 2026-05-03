@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum AgentStatus { ACTIVE IDLE BLOCKED }
+enum ProjectStatus { ACTIVE BLOCKED LAUNCH_READY BACKLOG }
+enum Priority { LOW MEDIUM HIGH CRITICAL }
+enum WorkflowStatus { ACTIVE PAUSED FAILED }
+
+model Agent {
+  id                 Int @id @default(autoincrement())
+  name               String @unique
+  mission            String
+  status             AgentStatus
+  permissionTier     String
+  allowedTools       String
+  memoryAccess       Boolean @default(true)
+  currentTask        String?
+  failureCount       Int @default(0)
+  lastRun            DateTime?
+  logs               String
+  approvalRequirement Boolean @default(true)
+}
+
+model Project {
+  id          Int @id @default(autoincrement())
+  name        String @unique
+  category    String
+  status      ProjectStatus
+  priority    Priority
+  description String
+  nextAction  String
+  tags        String
+  owner       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  memories    MemoryEntry[]
+}
+
+model MemoryEntry {
+  id          Int @id @default(autoincrement())
+  title       String
+  content     String
+  type        String
+  priority    Priority
+  confidence  Int
+  source      String
+  projectId   Int?
+  project     Project? @relation(fields: [projectId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Workflow {
+  id               Int @id @default(autoincrement())
+  name             String
+  triggerType      String
+  assignedAgent    String
+  status           WorkflowStatus
+  approvalRequired Boolean @default(true)
+  retryCount       Int @default(0)
+  maxRetries       Int @default(3)
+  lastRun          DateTime?
+  logOutput        String
+  simulated        Boolean @default(true)
+}
