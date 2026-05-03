@@ -1,0 +1,1 @@
+export default function Page(){return <div><h1>War Room</h1><div className='card'>Top priorities, blockers, roadmap, revenue lanes, decisions, next 7 actions, risk register, and active operating plan.</div></div>}

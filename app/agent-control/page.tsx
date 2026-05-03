@@ -1,0 +1,2 @@
+import { readState } from "@/lib/state";
+export default async function Page(){const s=await readState();return <div><h1>Agent Control</h1>{s.agents.map(a=><div className='card' key={a.id}><b>{a.name}</b> <span className='badge'>{a.status}</span><p>{a.mission}</p><p>Tier {a.permissionTier} | Task: {a.currentTask}</p><p>Actions: View agent, Assign task, Simulate run (simulated), Mark blocked, Request approval, Reset failure count, Disable agent.</p></div>)}</div>}

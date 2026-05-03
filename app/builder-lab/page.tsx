@@ -1,0 +1,1 @@
+export default function Page(){return <div><h1>Builder Lab</h1><div className='card'>Implementation plans, code tasks, repo checklist, bug tracker, feature requests, build/testing status, known errors, and next patch recommendations are tracked here.</div></div>}
