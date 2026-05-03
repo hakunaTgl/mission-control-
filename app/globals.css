@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body { @apply bg-zinc-950 text-zinc-100; }
+.card { @apply bg-zinc-900 border border-zinc-800 rounded-lg p-4; }
