@@ -1,0 +1,3 @@
+"use client";
+import { useEffect, useState } from "react";
+export default function Page(){const [d,setD]=useState<any>(null);useEffect(()=>{fetch('/api/diagnostics').then(r=>r.json()).then(setD);},[]);if(!d)return <div>Loading diagnostics...</div>;return <div><h1>Diagnostics Console</h1><div className='card'>DB exists: {String(d.database.exists)} | path: {d.database.path}</div><div className='card'>Projects in DB: {d.database.projectCount}</div><div className='card'>Pending approvals: {d.approvalsPending}</div><div className='card'>Local mode: {d.localMode}</div><div className='card'><b>Recent Errors</b><pre>{JSON.stringify(d.recentErrors,null,2)}</pre></div></div>}

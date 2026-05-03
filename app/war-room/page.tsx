@@ -1,0 +1,3 @@
+"use client";
+const actions=["Close critical bugs","Approve blocked workflows","Ship diagnostics export","Prepare red-team test plan","Review risk register","Lock rollout checklist","Run launch dry-run"];
+export default function Page(){return <div><h1>War Room</h1><div className='card'><b>Top priorities</b><ul><li>Stabilize runtime + approvals</li><li>Complete audit visibility</li></ul></div><div className='card'><b>Next 7 actions</b><ol>{actions.map(a=><li key={a}>{a}</li>)}</ol></div><div className='card'><b>Risk register</b><p>Primary risk: approval bypass and silent retries. Mitigation: auditable enforcement + anti-hang hard stop.</p></div></div>}
