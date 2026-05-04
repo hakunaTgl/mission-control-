@@ -5,6 +5,7 @@ node_modules
 .env.*.local
 data/*.db
 data/*.sqlite
+data/test-state.json
 logs/*.log
 .DS_Store
 dist

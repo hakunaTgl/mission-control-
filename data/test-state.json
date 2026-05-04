@@ -1,0 +1,12 @@
+{
+  "agents": [
+    {
+      "id": "seq2",
+      "name": "Second"
+    }
+  ],
+  "projects": [],
+  "memory": [],
+  "workflows": [],
+  "creative": []
+}
