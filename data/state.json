@@ -1,0 +1,394 @@
+{
+  "agents": [
+    {
+      "id": "a1",
+      "name": "Supreme Controller Agent",
+      "mission": "Supreme Controller Agent mission execution for Sovereign Mission Control.",
+      "status": "active",
+      "permissionTier": 1,
+      "allowedTools": [
+        "planning",
+        "diagnostics"
+      ],
+      "memoryAccessLevel": "project scoped",
+      "currentTask": "Coordinating operations",
+      "failureCount": 0,
+      "lastRun": "2026-05-03T20:00:00.000Z",
+      "logs": [
+        "Simulated run log."
+      ],
+      "approvalRequired": true,
+      "simulated": true
+    },
+    {
+      "id": "a2",
+      "name": "Planner Agent",
+      "mission": "Planner Agent mission execution for Sovereign Mission Control.",
+      "status": "idle",
+      "permissionTier": 2,
+      "allowedTools": [
+        "planning",
+        "diagnostics"
+      ],
+      "memoryAccessLevel": "project scoped",
+      "currentTask": "Awaiting assignment",
+      "failureCount": 0,
+      "lastRun": "2026-05-03T20:00:00.000Z",
+      "logs": [
+        "Simulated run log."
+      ],
+      "approvalRequired": true,
+      "simulated": true
+    },
+    {
+      "id": "a3",
+      "name": "Builder Agent",
+      "mission": "Builder Agent mission execution for Sovereign Mission Control.",
+      "status": "idle",
+      "permissionTier": 3,
+      "allowedTools": [
+        "planning",
+        "diagnostics"
+      ],
+      "memoryAccessLevel": "project scoped",
+      "currentTask": "Awaiting assignment",
+      "failureCount": 0,
+      "lastRun": "2026-05-03T20:00:00.000Z",
+      "logs": [
+        "Simulated run log."
+      ],
+      "approvalRequired": true,
+      "simulated": true
+    },
+    {
+      "id": "a4",
+      "name": "Reviewer Agent",
+      "mission": "Reviewer Agent mission execution for Sovereign Mission Control.",
+      "status": "idle",
+      "permissionTier": 4,
+      "allowedTools": [
+        "planning",
+        "diagnostics"
+      ],
+      "memoryAccessLevel": "project scoped",
+      "currentTask": "Awaiting assignment",
+      "failureCount": 0,
+      "lastRun": "2026-05-03T20:00:00.000Z",
+      "logs": [
+        "Simulated run log."
+      ],
+      "approvalRequired": true,
+      "simulated": true
+    },
+    {
+      "id": "a5",
+      "name": "Security Agent",
+      "mission": "Security Agent mission execution for Sovereign Mission Control.",
+      "status": "idle",
+      "permissionTier": 0,
+      "allowedTools": [
+        "planning",
+        "diagnostics"
+      ],
+      "memoryAccessLevel": "project scoped",
+      "currentTask": "Awaiting assignment",
+      "failureCount": 0,
+      "lastRun": "2026-05-03T20:00:00.000Z",
+      "logs": [
+        "Simulated run log."
+      ],
+      "approvalRequired": true,
+      "simulated": true
+    },
+    {
+      "id": "a6",
+      "name": "Memory Agent",
+      "mission": "Memory Agent mission execution for Sovereign Mission Control.",
+      "status": "idle",
+      "permissionTier": 1,
+      "allowedTools": [
+        "planning",
+        "diagnostics"
+      ],
+      "memoryAccessLevel": "project scoped",
+      "currentTask": "Awaiting assignment",
+      "failureCount": 0,
+      "lastRun": "2026-05-03T20:00:00.000Z",
+      "logs": [
+        "Simulated run log."
+      ],
+      "approvalRequired": true,
+      "simulated": true
+    },
+    {
+      "id": "a7",
+      "name": "Research Agent",
+      "mission": "Research Agent mission execution for Sovereign Mission Control.",
+      "status": "idle",
+      "permissionTier": 2,
+      "allowedTools": [
+        "planning",
+        "diagnostics"
+      ],
+      "memoryAccessLevel": "project scoped",
+      "currentTask": "Awaiting assignment",
+      "failureCount": 0,
+      "lastRun": "2026-05-03T20:00:00.000Z",
+      "logs": [
+        "Simulated run log."
+      ],
+      "approvalRequired": true,
+      "simulated": true
+    },
+    {
+      "id": "a8",
+      "name": "Creative Agent",
+      "mission": "Creative Agent mission execution for Sovereign Mission Control.",
+      "status": "idle",
+      "permissionTier": 3,
+      "allowedTools": [
+        "planning",
+        "diagnostics"
+      ],
+      "memoryAccessLevel": "project scoped",
+      "currentTask": "Awaiting assignment",
+      "failureCount": 0,
+      "lastRun": "2026-05-03T20:00:00.000Z",
+      "logs": [
+        "Simulated run log."
+      ],
+      "approvalRequired": true,
+      "simulated": true
+    },
+    {
+      "id": "a9",
+      "name": "Deployment Agent",
+      "mission": "Deployment Agent mission execution for Sovereign Mission Control.",
+      "status": "idle",
+      "permissionTier": 4,
+      "allowedTools": [
+        "planning",
+        "diagnostics"
+      ],
+      "memoryAccessLevel": "project scoped",
+      "currentTask": "Awaiting assignment",
+      "failureCount": 0,
+      "lastRun": "2026-05-03T20:00:00.000Z",
+      "logs": [
+        "Simulated run log."
+      ],
+      "approvalRequired": true,
+      "simulated": true
+    },
+    {
+      "id": "a10",
+      "name": "Diagnostics Agent",
+      "mission": "Diagnostics Agent mission execution for Sovereign Mission Control.",
+      "status": "idle",
+      "permissionTier": 0,
+      "allowedTools": [
+        "planning",
+        "diagnostics"
+      ],
+      "memoryAccessLevel": "project scoped",
+      "currentTask": "Awaiting assignment",
+      "failureCount": 0,
+      "lastRun": "2026-05-03T20:00:00.000Z",
+      "logs": [
+        "Simulated run log."
+      ],
+      "approvalRequired": true,
+      "simulated": true
+    }
+  ],
+  "projects": [
+    {
+      "id": "p1",
+      "name": "Sovereign Mission Control Core",
+      "category": "Core OS",
+      "status": "active",
+      "priority": "high",
+      "description": "Sovereign Mission Control Core execution stream.",
+      "nextAction": "Define next milestone",
+      "tags": [
+        "seed"
+      ],
+      "owner": "Founder",
+      "createdDate": "2026-05-03",
+      "updatedDate": "2026-05-03"
+    },
+    {
+      "id": "p2",
+      "name": "SmartHub Ultra",
+      "category": "Experimental",
+      "status": "idea",
+      "priority": "high",
+      "description": "SmartHub Ultra execution stream.",
+      "nextAction": "Define next milestone",
+      "tags": [
+        "seed"
+      ],
+      "owner": "Founder",
+      "createdDate": "2026-05-03",
+      "updatedDate": "2026-05-03"
+    },
+    {
+      "id": "p3",
+      "name": "Cortana Local Agent",
+      "category": "Experimental",
+      "status": "idea",
+      "priority": "high",
+      "description": "Cortana Local Agent execution stream.",
+      "nextAction": "Define next milestone",
+      "tags": [
+        "seed"
+      ],
+      "owner": "Founder",
+      "createdDate": "2026-05-03",
+      "updatedDate": "2026-05-03"
+    },
+    {
+      "id": "p4",
+      "name": "Live Conversation Intelligence",
+      "category": "Experimental",
+      "status": "idea",
+      "priority": "high",
+      "description": "Live Conversation Intelligence execution stream.",
+      "nextAction": "Define next milestone",
+      "tags": [
+        "seed"
+      ],
+      "owner": "Founder",
+      "createdDate": "2026-05-03",
+      "updatedDate": "2026-05-03"
+    },
+    {
+      "id": "p5",
+      "name": "Telegram Promo Network",
+      "category": "Experimental",
+      "status": "idea",
+      "priority": "high",
+      "description": "Telegram Promo Network execution stream.",
+      "nextAction": "Define next milestone",
+      "tags": [
+        "seed"
+      ],
+      "owner": "Founder",
+      "createdDate": "2026-05-03",
+      "updatedDate": "2026-05-03"
+    },
+    {
+      "id": "p6",
+      "name": "Zoom Event Operator",
+      "category": "Experimental",
+      "status": "idea",
+      "priority": "high",
+      "description": "Zoom Event Operator execution stream.",
+      "nextAction": "Define next milestone",
+      "tags": [
+        "seed"
+      ],
+      "owner": "Founder",
+      "createdDate": "2026-05-03",
+      "updatedDate": "2026-05-03"
+    },
+    {
+      "id": "p7",
+      "name": "Creative Prompt Engine",
+      "category": "Experimental",
+      "status": "idea",
+      "priority": "high",
+      "description": "Creative Prompt Engine execution stream.",
+      "nextAction": "Define next milestone",
+      "tags": [
+        "seed"
+      ],
+      "owner": "Founder",
+      "createdDate": "2026-05-03",
+      "updatedDate": "2026-05-03"
+    },
+    {
+      "id": "p8",
+      "name": "Bot Auto-Build System",
+      "category": "Experimental",
+      "status": "idea",
+      "priority": "high",
+      "description": "Bot Auto-Build System execution stream.",
+      "nextAction": "Define next milestone",
+      "tags": [
+        "seed"
+      ],
+      "owner": "Founder",
+      "createdDate": "2026-05-03",
+      "updatedDate": "2026-05-03"
+    },
+    {
+      "id": "p9",
+      "name": "Memory Vault",
+      "category": "Experimental",
+      "status": "idea",
+      "priority": "high",
+      "description": "Memory Vault execution stream.",
+      "nextAction": "Define next milestone",
+      "tags": [
+        "seed"
+      ],
+      "owner": "Founder",
+      "createdDate": "2026-05-03",
+      "updatedDate": "2026-05-03"
+    },
+    {
+      "id": "p10",
+      "name": "Diagnostics Runtime",
+      "category": "Experimental",
+      "status": "idea",
+      "priority": "high",
+      "description": "Diagnostics Runtime execution stream.",
+      "nextAction": "Define next milestone",
+      "tags": [
+        "seed"
+      ],
+      "owner": "Founder",
+      "createdDate": "2026-05-03",
+      "updatedDate": "2026-05-03"
+    }
+  ],
+  "memory": [
+    {
+      "id": "m1",
+      "title": "Safety baseline",
+      "content": "Risky actions require approval.",
+      "type": "system rule",
+      "linkedProject": "Sovereign Mission Control Core",
+      "priority": "critical",
+      "confidence": 0.99,
+      "source": "AGENTS.md",
+      "createdDate": "2026-05-03",
+      "updatedDate": "2026-05-03"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "w1",
+      "name": "Nightly diagnostics sweep",
+      "triggerType": "schedule",
+      "assignedAgent": "Diagnostics Agent",
+      "status": "success",
+      "approvalRequired": false,
+      "retryCount": 1,
+      "maxRetries": 3,
+      "lastRun": "2026-05-03T03:00:00.000Z",
+      "logOutput": "Simulated run complete. No critical errors.",
+      "failureExplanation": "N/A"
+    }
+  ],
+  "creative": [
+    {
+      "id": "c1",
+      "type": "campaign idea",
+      "title": "Launch week creator sprint",
+      "content": "7-day content + product reveal storyline.",
+      "createdDate": "2026-05-03"
+    }
+  ]
+}

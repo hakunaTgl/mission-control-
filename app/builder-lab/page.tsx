@@ -1,2 +1,4 @@
-import { AppShell } from '@/components/app-shell';
-export default function Page(){return <AppShell title='builder lab'><div className='card'>builder-lab module ready. Local-first mode enabled. Simulated runtime where noted.</div></AppShell>}
+"use client";
+import { useState } from "react";
+const starter = { plans:["Finalize SQLite migration","Harden approval policy middleware"], bugs:["Fix TS/Node test runner alignment"], features:["Agent task timeline","Workflow retries heatmap"] };
+export default function Page(){const [state,setState]=useState(starter);const [item,setItem]=useState('');return <div><h1>Builder Lab</h1><div className='card'><b>Implementation Plans</b><ul>{state.plans.map(p=><li key={p}>{p}</li>)}</ul></div><div className='card'><b>Known Errors</b><ul>{state.bugs.map(b=><li key={b}>{b}</li>)}</ul></div><div className='card'><b>Feature Requests</b><ul>{state.features.map(f=><li key={f}>{f}</li>)}</ul></div><div className='card'><input value={item} onChange={e=>setItem(e.target.value)} placeholder='Add patch recommendation'/><button onClick={()=>{if(item)setState({...state,plans:[...state.plans,item]});setItem('');}}>Add Next Patch Recommendation</button></div></div>;}

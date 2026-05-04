@@ -1,2 +1,1 @@
-import { AppShell } from '@/components/app-shell';
-export default function Page(){return <AppShell title='settings'><div className='card'>settings module ready. Local-first mode enabled. Simulated runtime where noted.</div></AppShell>}
+export default function Page(){return <div><h1>Settings / Safety</h1><div className='card'>Local-first mode enabled. External integrations disabled by default.</div><div className='card'>Risky actions require approval: delete records, shell commands, external messages, API connections, export private data, persistent memory modification, file overwrite.</div><div className='card'>Permission tiers Tier 0-5 documented. Backup/export/danger zone placeholders included.</div></div>}

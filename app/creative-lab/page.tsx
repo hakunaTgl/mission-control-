@@ -1,2 +1,2 @@
-import { AppShell } from '@/components/app-shell';
-export default function Page(){return <AppShell title='creative lab'><div className='card'>creative-lab module ready. Local-first mode enabled. Simulated runtime where noted.</div></AppShell>}
+import { readState } from "@/lib/state";
+export default async function Page(){const s=await readState();return <div><h1>Creative Lab</h1>{s.creative.map(c=><div className='card' key={c.id}><b>{c.title}</b> <span className='badge'>{c.type}</span><p>{c.content}</p></div>)}</div>}
