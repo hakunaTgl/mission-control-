@@ -30,3 +30,6 @@ export function queryJson(sql: string): unknown[] {
 export function execSql(sql: string) { runSql(sql); }
 export function getDbPath() { return dbPath; }
 export function dbExists() { return existsSync(dbPath); }
+
+/** Escape a value for safe interpolation into a single-quoted SQLite string. */
+export function esc(v: unknown): string { return String(v ?? "").replaceAll("'", "''"); }
