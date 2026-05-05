@@ -1,0 +1,3 @@
+import { NextResponse } from "next/server";import { initDb, queryJson, execSql, esc } from "@/lib/db";import { seedFromJsonIfEmpty } from "@/lib/seed";
+export async function GET(){initDb();await seedFromJsonIfEmpty();return NextResponse.json(queryJson("SELECT * FROM agents ORDER BY name;"));}
+export async function PATCH(req:Request){const b=await req.json();if(!b.id) return NextResponse.json({error:'id required'},{status:400});execSql(`UPDATE agents SET status='${esc(b.status)}', current_task='${esc(b.current_task??'')}', failure_count=${Math.max(0,Math.min(3,Number(b.failure_count??0)))} WHERE id='${esc(b.id)}';`);return NextResponse.json({ok:true});}

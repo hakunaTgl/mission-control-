@@ -1,0 +1,4 @@
+"use client";
+import { useEffect, useState } from "react";
+export default function Page(){const [rows,setRows]=useState<any[]>([]);const [name,setName]=useState("");const [msg,setMsg]=useState("");async function load(){setRows(await (await fetch('/api/projects')).json());}useEffect(()=>{load();},[]);async function add(){setMsg('Saving...');const r=await fetch('/api/projects',{method:'POST',body:JSON.stringify({name})});setMsg(r.ok?'Saved':'Error');setName('');load();}
+return <div><h1>Project Inventory</h1><div className='card'><input value={name} onChange={e=>setName(e.target.value)} placeholder='Project name'/> <button onClick={add}>Add Project</button> <span>{msg}</span></div>{rows.map(p=><div className='card' key={p.id}><b>{p.name}</b> <span className='badge'>{p.status}</span><p>{p.description}</p></div>)}</div>}
