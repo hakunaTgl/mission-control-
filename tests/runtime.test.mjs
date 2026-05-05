@@ -10,12 +10,14 @@ mkdirSync(path.dirname(dbPath), { recursive: true });
 function exec(sql){ return execFileSync('sqlite3',[dbPath,sql],{encoding:'utf8'}); }
 function query(sql){ return JSON.parse(execFileSync('sqlite3',['-json',dbPath,sql],{encoding:'utf8'}) || '[]'); }
 
+function esc(v) { return String(v).replaceAll("'", "''"); }
+
 function simulateWorkflowRun(id){
-  const rows = query(`SELECT * FROM workflows WHERE id='${id}' LIMIT 1;`);
+  const rows = query(`SELECT * FROM workflows WHERE id='${esc(id)}' LIMIT 1;`);
   if(!rows.length) return {ok:false,error:'not found'};
   const wf = rows[0];
   if (wf.retry_count >= 3 || wf.retry_count >= wf.max_retries) {
-    exec(`UPDATE workflows SET status='blocked', failure_explanation='Blocked by anti-hang guard' WHERE id='${id}';`);
+    exec(`UPDATE workflows SET status='blocked', failure_explanation='Blocked by anti-hang guard' WHERE id='${esc(id)}';`);
     return {ok:false,blocked:true};
   }
   return {ok:true};

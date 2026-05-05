@@ -1,11 +1,8 @@
 import { readState } from "./state";
-import { execSql, initDb } from "./db";
-
-function esc(v: string) { return v.replaceAll("'", "''"); }
+import { execSql, initDb, esc } from "./db";
 
 export async function seedFromJsonIfEmpty() {
   initDb();
-  const existing = execSql as unknown;
   const s = await readState();
   execSql("BEGIN;");
   for (const p of s.projects) {
