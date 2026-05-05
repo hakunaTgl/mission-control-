@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { @apply bg-bg text-gray-100; }
+.card { @apply bg-panel border border-red-500/20 rounded-xl p-4 shadow-lg shadow-red-500/10; }
+.input { @apply w-full rounded bg-black/30 border border-gray-700 p-2 text-sm; }
+.btn { @apply bg-accent/80 hover:bg-accent px-3 py-2 rounded text-sm font-semibold; }
