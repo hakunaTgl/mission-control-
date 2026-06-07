@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mission Control</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#050510;color:#c8d8f0;font-family:'Courier New',monospace}
+.topbar{background:#0a0a1e;border-bottom:1px solid #00ffff22;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:1.2rem;font-weight:700;color:#00ffff;letter-spacing:3px;text-shadow:0 0 12px #00ffff88}
+.sys{display:flex;gap:16px;font-size:.72rem}
+.si{display:flex;align-items:center;gap:5px}
+.led{width:7px;height:7px;border-radius:50%;animation:blink 2s infinite}
+.led.g{background:#00ff88;box-shadow:0 0 6px #00ff88}
+.led.b{background:#00aaff;box-shadow:0 0 6px #00aaff;animation-delay:.5s}
+.led.y{background:#ffcc00;box-shadow:0 0 6px #ffcc00;animation-delay:1s}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.grid{display:grid;grid-template-columns:170px 1fr 250px;height:calc(100vh - 44px)}
+.nav{background:#07071a;border-right:1px solid #00ffff11;padding:12px}
+.nlabel{font-size:.6rem;color:#00ffff55;letter-spacing:2px;margin-bottom:6px;text-transform:uppercase;margin-top:12px}
+.ni{padding:6px 8px;font-size:.76rem;color:#556677;cursor:pointer;border-left:2px solid transparent;transition:.15s}
+.ni:hover,.ni.on{color:#00ffff;border-left-color:#00ffff;background:#00ffff08}
+.main{background:#060618;padding:18px;overflow-y:auto}
+.hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.hdr h2{font-size:.9rem;color:#00ffff;letter-spacing:2px;text-transform:uppercase}
+.clk{font-size:.72rem;color:#334455}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.met{background:#07071a;border:1px solid #00ffff11;border-radius:4px;padding:10px;text-align:center}
+.mv{font-size:1.4rem;font-weight:700;color:#00ffff;text-shadow:0 0 8px #00ffff44}
+.ml{font-size:.58rem;color:#334455;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.ab{background:#07071a;border:1px solid #00ff8822;border-radius:4px;padding:10px;position:relative}
+.an{font-size:.78rem;color:#00ffff;margin-bottom:3px}
+.at{font-size:.68rem;color:#445566;margin-bottom:6px}
+.pb{height:3px;background:#00ffff11;border-radius:2px}
+.pf{height:100%;background:linear-gradient(90deg,#00ffff,#00ff88);border-radius:2px}
+.as{position:absolute;top:8px;right:8px;font-size:.6rem;color:#00ff88}
+.term{background:#020210;border:1px solid #00ffff22;border-radius:4px;padding:12px;min-height:160px;font-size:.76rem;line-height:1.8;margin-bottom:12px;overflow-y:auto;max-height:200px}
+.tp{color:#00ff88}.tc{color:#e0e0ff}.to{color:#7799bb}.tok{color:#00ff88}
+.irow{display:flex;gap:8px}
+.ci{flex:1;background:#020210;border:1px solid #00ffff33;border-radius:4px;padding:7px 10px;color:#00ffff;font-family:'Courier New',monospace;font-size:.78rem;outline:none}
+.ci:focus{border-color:#00ffff;box-shadow:0 0 6px #00ffff22}
+.rb{background:#00ffff11;border:1px solid #00ffff;border-radius:4px;padding:7px 14px;color:#00ffff;cursor:pointer;font-size:.78rem;font-family:monospace}
+.rb:hover{background:#00ffff33}
+.rp{background:#07071a;border-left:1px solid #00ffff11;padding:12px;overflow-y:auto}
+.rl{font-size:.6rem;color:#00ffff;letter-spacing:2px;margin-bottom:8px;text-transform:uppercase}
+.le{padding:5px 0;border-bottom:1px solid #00ffff08;font-size:.7rem}
+.lt{color:#334455;font-size:.62rem}
+.lm{color:#8899aa}
+.lm.ok{color:#00ff88}
+.lm.w{color:#ffcc00}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">&#9670; MISSION CONTROL</div>
+  <div class="sys">
+    <div class="si"><div class="led g"></div>CORE ONLINE</div>
+    <div class="si"><div class="led b"></div>12 AGENTS</div>
+    <div class="si"><div class="led y"></div>3 PIPELINES</div>
+  </div>
+</div>
+<div class="grid">
+  <div class="nav">
+    <div class="nlabel">Command</div>
+    <div class="ni on">&#9654; Dashboard</div>
+    <div class="ni">&#9654; Agents</div>
+    <div class="ni">&#9654; Pipelines</div>
+    <div class="ni">&#9654; Terminal</div>
+    <div class="nlabel">Systems</div>
+    <div class="ni">&#9654; Database</div>
+    <div class="ni">&#9654; API Gateway</div>
+    <div class="ni">&#9654; Scheduler</div>
+    <div class="nlabel">Reports</div>
+    <div class="ni">&#9654; Logs</div>
+    <div class="ni">&#9654; Analytics</div>
+  </div>
+  <div class="main">
+    <div class="hdr"><h2>&#9670; Sovereign Dashboard</h2><div class="clk" id="clk"></div></div>
+    <div class="metrics">
+      <div class="met"><div class="mv">12</div><div class="ml">Agents Active</div></div>
+      <div class="met"><div class="mv" id="tasks">847</div><div class="ml">Tasks Run</div></div>
+      <div class="met"><div class="mv">99.7%</div><div class="ml">Uptime</div></div>
+      <div class="met"><div class="mv">4ms</div><div class="ml">Latency</div></div>
+    </div>
+    <div class="agrid">
+      <div class="ab"><div class="an">&#9670; Orchestrator Core</div><div class="at">Routing 4 sub-agents to content pipeline</div><div class="pb"><div class="pf" style="width:78%"></div></div><div class="as">RUNNING</div></div>
+      <div class="ab"><div class="an">&#9670; Data Harvester</div><div class="at">Scraping 14 mobility product sources</div><div class="pb"><div class="pf" style="width:62%"></div></div><div class="as">RUNNING</div></div>
+      <div class="ab"><div class="an">&#9670; SQL Sentinel</div><div class="at">Monitoring DB integrity + query cache</div><div class="pb"><div class="pf" style="width:100%"></div></div><div class="as">IDLE</div></div>
+      <div class="ab"><div class="an">&#9670; API Watchdog</div><div class="at">Polling 8 external endpoints</div><div class="pb"><div class="pf" style="width:45%"></div></div><div class="as">RUNNING</div></div>
+    </div>
+    <div class="term" id="term">
+      <div><span class="tp">mission@ctrl:~$</span> <span class="tc">system status --all</span></div>
+      <div><span class="to">[CORE] Orchestrator...... </span><span class="tok">ONLINE</span></div>
+      <div><span class="to">[DB]   PostgreSQL........ </span><span class="tok">CONNECTED</span></div>
+      <div><span class="to">[API]  Gateway v3........ </span><span class="tok">ACTIVE</span></div>
+      <div><span class="to">[AUTH] JWT + OAuth2...... </span><span class="tok">SECURED</span></div>
+      <div><span class="to">[Q]    Task Queue........ </span><span class="tok">PROCESSING</span></div>
+      <div><span class="tp">mission@ctrl:~$</span> <span class="tc">_</span></div>
+    </div>
+    <div class="irow">
+      <input class="ci" placeholder="Enter command..." id="ci">
+      <button class="rb" onclick="run()">&#9654; RUN</button>
+    </div>
+  </div>
+  <div class="rp">
+    <div class="rl">System Log</div>
+    <div id="log">
+      <div class="le"><div class="lt">11:02:14</div><div class="lm ok">[OK] Pipeline #3 done in 1.2s</div></div>
+      <div class="le"><div class="lt">11:01:58</div><div class="lm">[INFO] Harvester pulled 312 records</div></div>
+      <div class="le"><div class="lt">11:01:44</div><div class="lm w">[WARN] Rate limit 80% Google API</div></div>
+      <div class="le"><div class="lt">11:01:30</div><div class="lm ok">[OK] Auth token refreshed</div></div>
+      <div class="le"><div class="lt">11:00:59</div><div class="lm ok">[OK] 12 agents initialized</div></div>
+    </div>
+  </div>
+</div>
+<script>
+setInterval(()=>document.getElementById('clk').textContent=new Date().toLocaleTimeString(),1000);
+setInterval(()=>{const t=document.getElementById('tasks');t.textContent=parseInt(t.textContent)+1;},3000);
+function run(){
+  const i=document.getElementById('ci'),v=i.value.trim();if(!v)return;
+  const t=document.getElementById('term');
+  t.innerHTML+=`<div><span class="tp">mission@ctrl:~$</span> <span class="tc">${v}</span></div><div><span class="to">&gt; ${v}... </span><span class="tok">DONE</span></div>`;
+  t.scrollTop=t.scrollHeight;
+  const l=document.getElementById('log');
+  l.innerHTML=`<div class="le"><div class="lt">${new Date().toLocaleTimeString()}</div><div class="lm ok">[CMD] ${v}</div></div>`+l.innerHTML;
+  i.value='';
+}
+document.getElementById('ci').addEventListener('keydown',e=>{if(e.key==='Enter')run();});
+</script>
+</body>
+</html>
